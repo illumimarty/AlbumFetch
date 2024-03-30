@@ -1,4 +1,4 @@
-package com.example.albumfetch
+package com.mnodado.albumfetch
 
 import org.junit.Test
 

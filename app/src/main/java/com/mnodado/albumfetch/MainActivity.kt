@@ -29,17 +29,7 @@ class MainActivity : AppCompatActivity() {
         trackList = ArrayList<Track>()
         rvTracks = findViewById(R.id.rvTracks)
         setupRecyclerView()
-        fetchTracks("Daft Punk", "Random Access Memories")
-
-//        val apiResponse = APIManager.getAlbumTracksForArtist("Daft Punk", "Random Access Memories")
-
-
-
-//        val apiResponse = fetchTracks("Daft Punk", "Random Access Memories")
-//
-//        if (apiResponse != null) {
-//            trackList = apiResponse
-//        }
+        fetchTracks("C418", "72 Minutes of Fame")
     }
 
     private fun setupRecyclerView() {
@@ -71,9 +61,10 @@ class MainActivity : AppCompatActivity() {
                 val album: JSONObject? = responseObject?.getJSONObject("album")
 
                 if (album != null) {
-                    val tracksJson: JSONArray = album.getJSONObject("tracks").getJSONArray("track")
+                    val albumArtUrl = album.getJSONArray("image").getJSONObject(1).getString("#text")
+                    val tracksJsonArray: JSONArray = album.getJSONObject("tracks").getJSONArray("track")
                     trackList.clear()
-                    val tracks = Track.fromJson(tracksJson)
+                    val tracks = Track.fromJson(tracksJsonArray, albumArtUrl)
 
                     trackList.addAll(tracks)
                     this@MainActivity.adapter.notifyDataSetChanged()
@@ -81,47 +72,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }]
-    }
-}
-
-class APIManager {
-    companion object Instance {
-
-        private val apikey = BuildConfig.API_KEY
-        private val client = AsyncHttpClient()
-
-        fun getAlbumTracksForArtist(artist: String, album: String): MutableList<Track>? {
-            val endpoint = "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=${apikey}&artist=${artist}&album=${album}&format=json"
-            val params = RequestParams()
-
-            lateinit var res: ArrayList<Track>
-
-            client[endpoint, params, object: JsonHttpResponseHandler() {
-                override fun onFailure(
-                    statusCode: Int,
-                    headers: Headers?,
-                    response: String?,
-                    throwable: Throwable?
-                ) {
-                    Log.d("API Response", response.toString())
-                }
-
-                override fun onSuccess(statusCode: Int, headers: Headers?, json: JSON?) {
-                    Log.d("API Response", json.toString())
-
-                    val responseObject = json?.jsonObject
-                    val album: JSONObject? = responseObject?.getJSONObject("album")
-
-                    if (album != null) {
-                        val tracksJson: JSONArray = album.getJSONObject("tracks").getJSONArray("track")
-                        val tracks = Track.fromJson(tracksJson)
-                        res = tracks
-                    }
-
-                }
-            }]
-
-            return res
-        }
     }
 }

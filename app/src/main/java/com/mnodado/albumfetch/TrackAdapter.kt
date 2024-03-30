@@ -6,14 +6,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class TrackAdapter (private val mTracks: List<Track>): RecyclerView.Adapter<TrackAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val albumArtView = itemView.findViewById<ImageView>(R.id.imageView)
-        val albumTitleView = itemView.findViewById<TextView>(R.id.albumTitle)
-        val releaseDateView = itemView.findViewById<TextView>(R.id.releaseDate)
-        val trackCountView = itemView.findViewById<TextView>(R.id.trackCount)
+        val trackTitleView = itemView.findViewById<TextView>(R.id.trackTitle)
+        val durationTextView = itemView.findViewById<TextView>(R.id.duration)
+        val trackNumber = itemView.findViewById<TextView>(R.id.trackNumber)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,14 +31,18 @@ class TrackAdapter (private val mTracks: List<Track>): RecyclerView.Adapter<Trac
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val track: Track = mTracks[position]
 
-        val nameTextView = holder.albumTitleView
-        nameTextView.text = track.albumTitle
+        val nameTextView = holder.trackTitleView
+        nameTextView.text = track.trackTitle
 
-        val releaseDateView = holder.releaseDateView
-        releaseDateView.text = track.releaseDate
+        val releaseDateView = holder.durationTextView
+        releaseDateView.text = "Duration: ${track.duration}"
 
-        val trackCountView = holder.trackCountView
-        trackCountView.text = "10"
+        val trackCountView = holder.trackNumber
+        trackCountView.text = "Track #${track.trackCount}"
+
+        Glide.with(holder.itemView)
+            .load(track.imageUrl)
+            .into(holder.albumArtView)
     }
 
 }

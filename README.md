@@ -4,7 +4,7 @@
 
 Submitted by: **Marthen Nodado**
 
-Time spent: **1.5** hours spent in total
+Time spent: **6** hours spent in total
 
 ## Summary
 
@@ -19,8 +19,8 @@ If I had to describe this project in three (3) emojis, they would be: ♻️☑�
 The following REQUIRED features are completed:
 
 - [x] Make an API call to an API of your choice using AsyncHTTPClient
-- [ ] Implement a RecyclerView to display a list of entries from the API
-- [ ] Display at least three (3) pieces of data for each RecyclerView item
+- [x] Implement a RecyclerView to display a list of entries from the API
+- [x] Display at least three (3) pieces of data for each RecyclerView item
 
 The following STRETCH features are implemented:
 

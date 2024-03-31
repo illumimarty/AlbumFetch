@@ -80,11 +80,13 @@ class MainActivity : AppCompatActivity() {
 
         // Check if album object exists
         if (album != null) {
+            var trackJsonArray: JSONArray?
             // Check if track array exists
             try {
-                return album.getJSONObject("tracks").getJSONArray("track")
+                trackJsonArray = album.getJSONObject("tracks").getJSONArray("track")
+                return trackJsonArray
             } catch (e: Exception) {
-                e.printStackTrace()
+                return null
             }
         }
         return null

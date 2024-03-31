@@ -30,19 +30,16 @@ class TrackAdapter (private val mTracks: List<Track>): RecyclerView.Adapter<Trac
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val track: Track = mTracks[position]
-
-        val nameTextView = holder.trackTitleView
-        nameTextView.text = track.trackTitle
-
         val releaseDateView = holder.durationTextView
-        releaseDateView.text = "Duration: ${track.duration}"
-
         val trackCountView = holder.trackNumber
+        val nameTextView = holder.trackTitleView
+
+        nameTextView.text = track.trackTitle
+        releaseDateView.text = "Duration: ${track.duration}"
         trackCountView.text = "Track #${track.trackCount}"
 
         Glide.with(holder.itemView)
             .load(track.imageUrl)
             .into(holder.albumArtView)
     }
-
 }

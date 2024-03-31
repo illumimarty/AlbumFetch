@@ -12,17 +12,18 @@ class Track() {
     lateinit var duration: String
     lateinit var trackTitle: String
 
-    public
     companion object {
 
+        /**
+         * Parses through JSONArray, fits JSONObject element to Track data model, and adds to a Track ArrayList
+         */
         fun fromJson(arr: JSONArray, imageUrl: String?): ArrayList<Track> {
             val tracks = ArrayList<Track>(arr.length())
 
             for (i in 0..<arr.length()) {
-
                 try {
                     val trackObj = arr.getJSONObject(i)
-                    val track = Track.fromJson(trackObj)
+                    val track = fromJson(trackObj)
 
                     if (track != null) {
                         if (imageUrl != null) {
@@ -54,15 +55,16 @@ class Track() {
             return "$formattedMinutes:$formattedSeconds"
         }
 
+        /**
+         * Maps JSONObject values to Track data model properties
+         */
         fun fromJson(obj: JSONObject): Track? {
             var newTrack = Track()
 
             try {
-                newTrack.trackTitle = obj.getString("name")
-
                 val duration = formatDuration(obj.getString("duration"))
                 newTrack.duration = duration
-
+                newTrack.trackTitle = obj.getString("name")
                 newTrack.trackCount = obj.getJSONObject("@attr").getString("rank")
             } catch (error: JSONException) {
                 error.printStackTrace()

@@ -4,7 +4,7 @@
 
 Submitted by: **Marthen Nodado**
 
-Time spent: **6** hours spent in total
+Time spent: **8** hours spent in total
 
 ## Summary
 
@@ -36,13 +36,15 @@ The following EXTRA features are implemented:
 
 Here's a video / GIF that demos all of the app's implemented features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Demo' width='' alt='Video Demo' />
+<img src='https://i.imgur.com/DEKRH0S.gif' title='Video Demo' width='250' alt='Video Demo' />
 
 GIF created with **Kap**
 
 ## Notes
 
 Here's a place for any other notes on the app, it's creation process, or what you learned this unit!
+
+- Hiding API Keys
 
 ## License
 

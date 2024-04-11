@@ -1,8 +1,15 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
     <style name="Base.Theme.AlbumFetch" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="MyInteractionStyle" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/finger_paint</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@android:color/holo_orange_dark</item>
     </style>
 
     <style name="Theme.AlbumFetch" parent="Base.Theme.AlbumFetch" />

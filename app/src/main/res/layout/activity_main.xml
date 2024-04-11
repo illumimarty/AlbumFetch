@@ -25,7 +25,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-
+        style="@style/MyInteractionStyle"
         app:layout_constraintTop_toBottomOf="@id/albumArt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +35,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/MyInteractionStyle"
             android:hint="Album Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,12 +50,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="1dp"
+        style="@style/MyInteractionStyle"
         tools:layout_editor_absoluteY="246dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Artist Name" />
+            android:hint="Artist Name"
+            style="@style/MyInteractionStyle" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -75,9 +78,10 @@
         android:layout_width="186dp"
         android:layout_height="50dp"
         android:text="Fetch Tracks"
+        style="@style/MyInteractionStyle"
         app:layout_constraintBottom_toBottomOf="@+id/albumArt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/albumArt"/>
+        app:layout_constraintStart_toEndOf="@id/albumArt" />
 
     <!--    <androidx.recyclerview.widget.RecyclerView-->
 <!--        android:id="@+id/rvTracks"-->
